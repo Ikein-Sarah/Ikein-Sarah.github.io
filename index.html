@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarah Ikein · AI Engineer</title>
+<meta name="description" content="Sarah Ikein, AI Applied Engineer. RAG systems, agents, text-to-SQL and the backends around them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --ink:#1b1a17; --muted:#5f5b52; --line:#e4e0d6;
+  --accent:#2f5d50; --accent-soft:#e3ece8; --tag:#f0ede6;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141513; --surface:#1c1d1a; --ink:#ecebe6; --muted:#a19d93; --line:#2e2f2b;
+         --accent:#8cc5b0; --accent-soft:#22302b; --tag:#262723; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+nav .name{font-family:Fraunces,serif;font-weight:600;color:var(--ink)}
+nav .links{display:flex;gap:18px;font-size:14px}
+nav .links a{color:var(--muted)}
+@media (max-width:560px){nav .links a:not(.keep){display:none}}
+header{padding:72px 0 48px}
+.eyebrow{font:500 13px/1 "JetBrains Mono",monospace;color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
+h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(36px,6vw,56px);line-height:1.08;margin:14px 0 18px;letter-spacing:-.01em}
+.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-block;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:500;font-size:15px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-family:Fraunces,serif;font-weight:600;font-size:28px;margin:0 0 22px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:18px}
+.project h3{margin:0;font-size:20px}
+.project h3 a{color:var(--ink)}
+.status{display:inline-block;font:500 12px/1 "JetBrains Mono",monospace;padding:5px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin:8px 0 10px}
+.project p{margin:0 0 10px;color:var(--muted)}
+.project ul{margin:0 0 14px;padding-left:20px}
+.project li{margin:4px 0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:12px/1 "JetBrains Mono",monospace;background:var(--tag);color:var(--muted);padding:6px 8px;border-radius:6px}
+.plinks{display:flex;gap:16px;margin-top:14px;font-size:14px;font-weight:500}
+.job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+.when{font:13px/1.6 "JetBrains Mono",monospace;color:var(--muted)}
+.job h3{margin:0;font-size:17px}
+.job .org{color:var(--muted);font-size:15px;margin-bottom:6px}
+.job ul{margin:6px 0 0;padding-left:20px}
+.job li{margin:3px 0}
+@media (max-width:600px){.job{grid-template-columns:1fr;gap:4px}}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.skill h3{margin:0 0 8px;font-size:15px}
+.skill p{margin:0;color:var(--muted);font-size:15px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.mini a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;color:var(--ink)}
+.mini a:hover{text-decoration:none;border-color:var(--accent)}
+.mini span{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+footer{padding:44px 0 64px;border-top:1px solid var(--line);color:var(--muted)}
+footer h2{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="name" href="#">Sarah Ikein</a>
+  <div class="links">
+    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a class="keep" href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">AI Applied Engineer</div>
+  <h1>I build AI applications that answer from real data and know when to say "I don't know".</h1>
+  <p class="lead">RAG systems, agents and text-to-SQL, plus the backend, database and automation around them. I'm currently a founding AI engineer at a logistics startup, and I've spent two years writing technical content about AI for audiences in the hundreds of thousands.</p>
+  <div class="cta">
+    <a class="btn primary" href="#projects">See my projects</a>
+    <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/ikein-sarah-51b664224">LinkedIn</a>
+    <a class="btn" href="mailto:elosarah85@gmail.com">Email me</a>
+  </div>
+</header>
+
+<section id="projects">
+  <h2>Featured projects</h2>
+
+  <div class="project">
+    <h3><a href="https://github.com/Ikein-Sarah/nimbus-onboarding-assistant">Nimbus Onboarding Assistant</a></h3>
+    <div class="status">RAG · in progress</div>
+    <p>An assistant that answers new-hire questions from company documents, using only the documents that employee is allowed to see. Every answer cites its sources, and it refuses instead of guessing.</p>
+    <ul>
+      <li>Two retrieval routes to compare: <b>hybrid search</b> (pgvector + Postgres full-text, merged with Reciprocal Rank Fusion) and an <b>agentic file search</b> using <code>list_folder</code>, <code>grep</code> and <code>read_file</code> tools</li>
+      <li>Access control enforced in the retrieval layer (SQL filters and permission-gated tools), not left to the LLM</li>
+      <li>Handles superseded policies by preferring the newest effective date</li>
+      <li>32-question evaluation set with access "traps", multi-hop and unanswerable questions, over a 60-document test company</li>
+    </ul>
+    <div class="tags"><span>Python</span><span>Postgres</span><span>pgvector</span><span>OpenAI Responses API</span><span>Tool calling</span><span>Docker</span></div>
+    <div class="plinks"><a href="https://github.com/Ikein-Sarah/nimbus-onboarding-assistant">Code and architecture →</a></div>
+  </div>
+
+  <div class="project">
+    <h3><a href="https://github.com/Ikein-Sarah/newscaster-ai">Newscaster AI</a></h3>
+    <div class="status">AI agent · deployed, runs daily</div>
+    <p>A personal AI news agent. Every morning it scrapes nine AI and ML blogs, extracts the full articles, has an LLM read them like an editor (story type, angle, key insight), and emails a grouped digest.</p>
+    <ul>
+      <li>Pipeline with a status state machine per article: fetched → content_fetched → analyzed → emailed</li>
+      <li>Runs on a GitHub Actions schedule against Supabase Postgres, at zero hosting cost</li>
+      <li>Schema managed with Alembic migrations; duplicate-safe inserts</li>
+    </ul>
+    <div class="tags"><span>Python</span><span>SQLAlchemy</span><span>Alembic</span><span>Supabase</span><span>OpenAI</span><span>GitHub Actions</span></div>
+    <div class="plinks"><a href="https://github.com/Ikein-Sarah/newscaster-ai">Code and architecture →</a></div>
+  </div>
+
+  <div class="project">
+    <h3>BeautyIQ</h3>
+    <div class="status">Text-to-SQL · team product, nearly complete</div>
+    <p>An AI analytics product for small businesses. Owners upload their sales data and ask questions in plain English, like "what should I restock?" or "how did sales change this quarter?"</p>
+    <ul>
+      <li>Data is cleaned and mapped into Postgres, then the AI layer plans the analysis, generates <b>read-only SQL</b>, validates it, and returns answers with charts and evidence</li>
+      <li>Runs on a local model (Ollama + Qwen) instead of a hosted API</li>
+      <li>Built with a data engineer. I own the AI layer and the backend: authentication, column mapping and the question-to-SQL flow</li>
+    </ul>
+    <div class="tags"><span>Python</span><span>Postgres</span><span>Ollama</span><span>Qwen</span><span>Text-to-SQL</span><span>Docker</span></div>
+    <div class="plinks"><span style="color:var(--muted)">Private repo · demo on request</span></div>
+  </div>
+
+  <div class="project">
+    <h3><a href="https://github.com/Ikein-Sarah/content-workflow-agent">AI Content Workflow Agent</a></h3>
+    <div class="status">Multi-agent · hackathon, deployed</div>
+    <p>Turns one topic into a researched blog post plus TikTok, LinkedIn and Instagram versions, then saves them to Notion and schedules them on Google Calendar.</p>
+    <ul>
+      <li>Six agents built with the OpenAI Agents SDK, each returning structured output</li>
+      <li>A writer/evaluator loop that rewrites with feedback until the post scores 7/10 or better</li>
+      <li>Deployed on Streamlit for the 1M Celebration Hackathon (2025)</li>
+    </ul>
+    <div class="tags"><span>OpenAI Agents SDK</span><span>Multi-agent</span><span>Tavily</span><span>Notion API</span><span>Google Calendar API</span><span>Streamlit</span></div>
+    <div class="plinks"><a href="https://github.com/Ikein-Sarah/content-workflow-agent">Code →</a><a href="https://content-workflow-agent.streamlit.app/">Live app →</a></div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="when">Sep 2026 – now</div>
+    <div>
+      <h3>Founding AI Engineer</h3>
+      <div class="org">Stedy · logistics platform that batches merchant deliveries into routes</div>
+      <ul>
+        <li>Wrote the AI plan for the MVP: a customer-facing policy chatbot and route planning with Google OR-Tools</li>
+        <li>Planned the data tracking that later features like demand forecasting will learn from</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">Aug 2026 – now</div>
+    <div>
+      <h3>AI &amp; Backend Engineer</h3>
+      <div class="org">BeautyIQ · AI analytics for small businesses (team of two)</div>
+      <ul>
+        <li>Lead what the team builds; own the AI layer and the backend</li>
+        <li>Built authentication and the column-mapping step that turns messy uploads into a clean schema</li>
+        <li>AI layer runs on a local model (Ollama + Qwen), packaged with Docker</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">Feb 2025 – Jun 2026</div>
+    <div>
+      <h3>AI Prototype Builder &amp; Technical Content Strategist</h3>
+      <div class="org">Freelance · AI and data science YouTube creators</div>
+      <ul>
+        <li>Built AI prototypes for a creator's channel with a 300K+ audience, then turned them into scripts and tutorials</li>
+        <li>Researched and wrote technical scripts on AI, data and developer tools, including LLM security topics like prompt injection and MCP tool poisoning</li>
+        <li>Curated a Python AI project library and built a personalized Python learning assistant for a course</li>
+        <li>Grew a product-focused social account to 90K+ followers and 3M+ views</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">Jun 2025 – May 2026</div>
+    <div>
+      <h3>Computer Science Teacher</h3>
+      <div class="org">Roots Way Comprehensive High School</div>
+      <ul><li>Taught computer science full-time to secondary school students</li></ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">2019 – 2024</div>
+    <div>
+      <h3>BSc Computer Science, Second Class Upper</h3>
+      <div class="org">University of Benin</div>
+      <ul><li>Certifications: LangSmith; DataCamp Machine Learning and Python; AI Native Engineering</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>What I work with</h2>
+  <div class="skills">
+    <div class="skill"><h3>AI engineering</h3><p>RAG, hybrid search, agents and tool calling, text-to-SQL, evaluation sets, OpenAI API and Agents SDK, Ollama, LangChain</p></div>
+    <div class="skill"><h3>Backend &amp; data</h3><p>Python, FastAPI, Postgres, pgvector, SQLAlchemy, Alembic, Supabase, JWT auth</p></div>
+    <div class="skill"><h3>Shipping</h3><p>Docker, Docker Compose, GitHub Actions, Streamlit, Git</p></div>
+    <div class="skill"><h3>Communication</h3><p>Technical writing, documentation, video scripts, explaining AI to non-technical teams</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Smaller experiments</h2>
+  <div class="mini">
+    <a href="https://github.com/Ikein-Sarah/book-notes">book-notes<span>FastAPI + Postgres app built as the demo for a Docker Compose tutorial</span></a>
+    <a href="https://github.com/Ikein-Sarah/knowledge_graph_project">knowledge_graph_project<span>An early knowledge-graph experiment</span></a>
+  </div>
+</section>
+</div>
+
+<footer id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p>I'm open to AI engineering roles and freelance AI builds, remote-first.</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:elosarah85@gmail.com">elosarah85@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/ikein-sarah-51b664224">LinkedIn</a>
+    <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
+    <a class="btn" href="https://medium.com/@elosarah85">Medium</a>
+  </div>
+</div></footer>
+
+</body>
+</html>
