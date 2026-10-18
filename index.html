@@ -48,7 +48,6 @@ h2{font-family:Fraunces,serif;font-weight:600;font-size:28px;margin:0 0 22px}
 .project li{margin:4px 0}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font:12px/1 "JetBrains Mono",monospace;background:var(--tag);color:var(--muted);padding:6px 8px;border-radius:6px}
-.plinks a.demo[href="#"]{display:none}
 .plinks{display:flex;gap:16px;margin-top:14px;font-size:14px;font-weight:500}
 .job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
 .job:last-child{border-bottom:0}
@@ -75,7 +74,7 @@ footer h2{color:var(--ink)}
 <nav><div class="wrap">
   <a class="name" href="#">Sarah Ikein</a>
   <div class="links">
-    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a class="keep" href="#contact">Contact</a>
+    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Skills</a><a class="keep" href="#contact">Contact</a>
   </div>
 </div></nav>
 
@@ -118,8 +117,8 @@ footer h2{color:var(--ink)}
   <!-- ===== PROJECT START: Newscaster AI ===== -->
   <div class="project">
     <h3><a href="https://github.com/Ikein-Sarah/newscaster-ai">Newscaster AI</a></h3>
-    <div class="status">AI agent · deployed, runs daily</div>
-    <p>A personal AI news agent. Every morning it scrapes nine AI and ML blogs, extracts the full articles, has an LLM read them like an editor (story type, angle, key insight), and emails a grouped digest.</p>
+    <div class="status">AI workflow · deployed, runs daily</div>
+    <p>A personal AI news workflow. Every morning it scrapes trusted AI and ML blogs, extracts the full articles, has an LLM read them like an editor (story type, angle, key insight), and emails a grouped digest.</p>
     <ul>
       <li>Pipeline with a status state machine per article: fetched → content_fetched → analyzed → emailed</li>
       <li>Runs on a GitHub Actions schedule against Supabase Postgres, at zero hosting cost</li>
@@ -137,7 +136,7 @@ footer h2{color:var(--ink)}
   <!-- ===== PROJECT START: BeautyIQ ===== -->
   <div class="project">
     <h3>BeautyIQ</h3>
-    <div class="status">Text-to-SQL · team product, nearly complete</div>
+    <div class="status">Full-stack AI · text-to-SQL · team project</div>
     <p>An AI analytics product for small businesses. Owners upload their sales data and ask questions in plain English, like "what should I restock?" or "how did sales change this quarter?"</p>
     <ul>
       <li>Data is cleaned and mapped into Postgres, then the AI layer plans the analysis, generates <b>read-only SQL</b>, validates it, and returns answers with charts and evidence</li>
@@ -223,6 +222,19 @@ footer h2{color:var(--ink)}
   </div>
 </section>
 
+<section id="writing">
+  <h2>Writing</h2>
+  <p style="color:var(--muted);margin:-8px 0 18px">I write about what I build and learn.</p>
+  <div class="mini">
+    <!-- ===== ARTICLE: copy one <a>...</a> line to add a new article ===== -->
+    <a href="https://sarahikein.com/blog/codebase-with-graphify/">Understanding an Unfamiliar Codebase Using Graphify<span>Tutorial</span></a>
+    <a href="https://sarahikein.com/blog/docker-compose/">Getting Started with Docker Compose<span>Tutorial</span></a>
+    <a href="https://sarahikein.com/blog/claude-for-productivity/">5 Claude Features Most People Don't Know About<span>Article</span></a>
+    <a href="https://sarahikein.com/blog/ai-security-threats-at-work/">AI Security Threats at Work<span>YouTube script</span></a>
+    <a href="https://sarahikein.com/blog/custom-kiosk-software/">Interactive Kiosk Development: What Custom Kiosk Software Should Do<span>Article</span></a>
+  </div>
+</section>
+
 <section id="skills">
   <h2>What I work with</h2>
   <div class="skills">
@@ -249,7 +261,7 @@ footer h2{color:var(--ink)}
     <a class="btn primary" href="mailto:elosarah85@gmail.com">elosarah85@gmail.com</a>
     <a class="btn" href="https://www.linkedin.com/in/ikein-sarah-51b664224">LinkedIn</a>
     <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
-    <a class="btn" href="https://medium.com/@elosarah85">Medium</a>
+    <a class="btn" href="https://sarahikein.com">Blog</a>
   </div>
 </div></footer>
 
