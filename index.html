@@ -48,6 +48,7 @@ h2{font-family:Fraunces,serif;font-weight:600;font-size:28px;margin:0 0 22px}
 .project li{margin:4px 0}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font:12px/1 "JetBrains Mono",monospace;background:var(--tag);color:var(--muted);padding:6px 8px;border-radius:6px}
+.plinks a.demo[href="#"]{display:none}
 .plinks{display:flex;gap:16px;margin-top:14px;font-size:14px;font-weight:500}
 .job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
 .job:last-child{border-bottom:0}
@@ -81,8 +82,8 @@ footer h2{color:var(--ink)}
 <div class="wrap">
 <header>
   <div class="eyebrow">AI Applied Engineer</div>
-  <h1>I build AI applications that answer from real data and know when to say "I don't know".</h1>
-  <p class="lead">RAG systems, agents and text-to-SQL, plus the backend, database and automation around them. I'm currently a founding AI engineer at a logistics startup, and I've spent two years writing technical content about AI for audiences in the hundreds of thousands.</p>
+  <h1>I build useful AI solutions that save time and money.</h1>
+  <p class="lead">I integrate AI into real workflows: assistants that answer from company documents, agents that do the reading for you, and analytics anyone can ask questions in plain English.</p>
   <div class="cta">
     <a class="btn primary" href="#projects">See my projects</a>
     <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
@@ -94,20 +95,27 @@ footer h2{color:var(--ink)}
 <section id="projects">
   <h2>Featured projects</h2>
 
+  <!-- ===== PROJECT START: Nimbus ===== -->
   <div class="project">
     <h3><a href="https://github.com/Ikein-Sarah/nimbus-onboarding-assistant">Nimbus Onboarding Assistant</a></h3>
-    <div class="status">RAG · in progress</div>
-    <p>An assistant that answers new-hire questions from company documents, using only the documents that employee is allowed to see. Every answer cites its sources, and it refuses instead of guessing.</p>
+    <div class="status">RAG · full-stack, end to end</div>
+    <p>An onboarding assistant for companies. Employees log in and ask questions about the company, and the assistant answers only from the documents their role is allowed to see. Every answer cites its sources, and it refuses instead of guessing.</p>
     <ul>
-      <li>Two retrieval routes to compare: <b>hybrid search</b> (pgvector + Postgres full-text, merged with Reciprocal Rank Fusion) and an <b>agentic file search</b> using <code>list_folder</code>, <code>grep</code> and <code>read_file</code> tools</li>
+      <li>Login with role-based access: each employee sees company-wide docs, their department's docs and their own personal files, nothing else</li>
+      <li>Two retrieval routes: <b>hybrid search</b> (pgvector + Postgres full-text, merged with Reciprocal Rank Fusion) and an <b>agentic file search</b> using <code>list_folder</code>, <code>grep</code> and <code>read_file</code> tools</li>
       <li>Access control enforced in the retrieval layer (SQL filters and permission-gated tools), not left to the LLM</li>
-      <li>Handles superseded policies by preferring the newest effective date</li>
-      <li>32-question evaluation set with access "traps", multi-hop and unanswerable questions, over a 60-document test company</li>
+      <li>Tested with a 32-question evaluation set, including access "traps", multi-hop and unanswerable questions</li>
     </ul>
     <div class="tags"><span>Python</span><span>Postgres</span><span>pgvector</span><span>OpenAI Responses API</span><span>Tool calling</span><span>Docker</span></div>
-    <div class="plinks"><a href="https://github.com/Ikein-Sarah/nimbus-onboarding-assistant">Code and architecture →</a></div>
+    <div class="plinks">
+      <a href="https://github.com/Ikein-Sarah/nimbus-onboarding-assistant">Code →</a>
+      <!-- DEMO VIDEO: replace # with your video link -->
+      <a href="#" class="demo">Demo video →</a>
+    </div>
   </div>
+  <!-- ===== PROJECT END: Nimbus ===== -->
 
+  <!-- ===== PROJECT START: Newscaster AI ===== -->
   <div class="project">
     <h3><a href="https://github.com/Ikein-Sarah/newscaster-ai">Newscaster AI</a></h3>
     <div class="status">AI agent · deployed, runs daily</div>
@@ -118,22 +126,34 @@ footer h2{color:var(--ink)}
       <li>Schema managed with Alembic migrations; duplicate-safe inserts</li>
     </ul>
     <div class="tags"><span>Python</span><span>SQLAlchemy</span><span>Alembic</span><span>Supabase</span><span>OpenAI</span><span>GitHub Actions</span></div>
-    <div class="plinks"><a href="https://github.com/Ikein-Sarah/newscaster-ai">Code and architecture →</a></div>
+    <div class="plinks">
+      <a href="https://github.com/Ikein-Sarah/newscaster-ai">Code →</a>
+      <!-- DEMO VIDEO: replace # with your video link -->
+      <a href="#" class="demo">Demo video →</a>
+    </div>
   </div>
+  <!-- ===== PROJECT END: Newscaster AI ===== -->
 
+  <!-- ===== PROJECT START: BeautyIQ ===== -->
   <div class="project">
     <h3>BeautyIQ</h3>
     <div class="status">Text-to-SQL · team product, nearly complete</div>
     <p>An AI analytics product for small businesses. Owners upload their sales data and ask questions in plain English, like "what should I restock?" or "how did sales change this quarter?"</p>
     <ul>
       <li>Data is cleaned and mapped into Postgres, then the AI layer plans the analysis, generates <b>read-only SQL</b>, validates it, and returns answers with charts and evidence</li>
-      <li>Runs on a local model (Ollama + Qwen) instead of a hosted API</li>
+      <li>Runs on a local model (Ollama + Qwen)</li>
       <li>Built with a data engineer. I own the AI layer and the backend: authentication, column mapping and the question-to-SQL flow</li>
     </ul>
     <div class="tags"><span>Python</span><span>Postgres</span><span>Ollama</span><span>Qwen</span><span>Text-to-SQL</span><span>Docker</span></div>
-    <div class="plinks"><span style="color:var(--muted)">Private repo · demo on request</span></div>
+    <div class="plinks">
+      <span style="color:var(--muted)">Private repo</span>
+      <!-- DEMO VIDEO: replace # with your video link -->
+      <a href="#" class="demo">Demo video →</a>
+    </div>
   </div>
+  <!-- ===== PROJECT END: BeautyIQ ===== -->
 
+  <!-- ===== PROJECT START: AI Content Workflow Agent ===== -->
   <div class="project">
     <h3><a href="https://github.com/Ikein-Sarah/content-workflow-agent">AI Content Workflow Agent</a></h3>
     <div class="status">Multi-agent · hackathon, deployed</div>
@@ -144,24 +164,18 @@ footer h2{color:var(--ink)}
       <li>Deployed on Streamlit for the 1M Celebration Hackathon (2025)</li>
     </ul>
     <div class="tags"><span>OpenAI Agents SDK</span><span>Multi-agent</span><span>Tavily</span><span>Notion API</span><span>Google Calendar API</span><span>Streamlit</span></div>
-    <div class="plinks"><a href="https://github.com/Ikein-Sarah/content-workflow-agent">Code →</a><a href="https://content-workflow-agent.streamlit.app/">Live app →</a></div>
+    <div class="plinks">
+      <a href="https://github.com/Ikein-Sarah/content-workflow-agent">Code →</a>
+      <a href="https://content-workflow-agent.streamlit.app/">Live app →</a>
+      <!-- DEMO VIDEO: link to the existing demo video -->
+      <a href="https://drive.google.com/file/d/1l8fgp7O1P7Br5zmDdGA2i8rxZ9YZ2AAF/view?usp=drive_link" class="demo">Demo video →</a>
+    </div>
   </div>
+  <!-- ===== PROJECT END: AI Content Workflow Agent ===== -->
 </section>
 
 <section id="experience">
   <h2>Experience</h2>
-
-  <div class="job">
-    <div class="when">Sep 2026 – now</div>
-    <div>
-      <h3>Founding AI Engineer</h3>
-      <div class="org">Stedy · logistics platform that batches merchant deliveries into routes</div>
-      <ul>
-        <li>Wrote the AI plan for the MVP: a customer-facing policy chatbot and route planning with Google OR-Tools</li>
-        <li>Planned the data tracking that later features like demand forecasting will learn from</li>
-      </ul>
-    </div>
-  </div>
 
   <div class="job">
     <div class="when">Aug 2026 – now</div>
