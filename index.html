@@ -65,6 +65,13 @@ h2{font-family:Fraunces,serif;font-weight:600;font-size:28px;margin:0 0 22px}
 .mini a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;color:var(--ink)}
 .mini a:hover{text-decoration:none;border-color:var(--accent)}
 .mini span{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.marquee{overflow:hidden;padding:6px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:flex;gap:10px;width:max-content;animation:scroll 45s linear infinite}
+.marquee.reverse .track{animation-direction:reverse}
+.marquee:hover .track{animation-play-state:paused}
+.marquee span{font:500 14px/1 "JetBrains Mono",monospace;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:999px;white-space:nowrap}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 5px))}}
+@media (prefers-reduced-motion:reduce){.marquee .track{animation:none;flex-wrap:wrap;width:auto}.marquee{-webkit-mask-image:none;mask-image:none}}
 footer{padding:44px 0 64px;border-top:1px solid var(--line);color:var(--muted)}
 footer h2{color:var(--ink)}
 </style>
@@ -208,27 +215,19 @@ footer h2{color:var(--ink)}
 </section>
 
 <section id="skills">
-  <h2>What I work with</h2>
-  <div class="skills">
-    <div class="skill"><h3>AI engineering</h3><p>RAG, hybrid search, agents and tool calling, text-to-SQL, evaluation sets, OpenAI API and Agents SDK, Ollama, LangChain</p></div>
-    <div class="skill"><h3>Backend &amp; data</h3><p>Python, FastAPI, Postgres, pgvector, SQLAlchemy, Alembic, Supabase, JWT auth</p></div>
-    <div class="skill"><h3>Shipping</h3><p>Docker, Docker Compose, GitHub Actions, Render, Neon, Streamlit, Git</p></div>
-    <div class="skill"><h3>Communication</h3><p>Technical writing, documentation, video scripts, explaining AI to non-technical teams</p></div>
-  </div>
+  <h2>Stack</h2>
+  <!-- STACK: add a tool by copying a <span>...</span> (add it twice in the same row, the row repeats to loop) -->
+    <div class="marquee "><div class="track"><span>Python</span><span>TypeScript</span><span>FastAPI</span><span>LangChain</span><span>LangSmith</span><span>OpenAI API</span><span>OpenAI Agents SDK</span><span>RAG</span><span>Hybrid search</span><span>Agents</span><span>Tool calling</span><span>MCP</span><span>Ollama</span><span>Evaluation</span><span>Python</span><span>TypeScript</span><span>FastAPI</span><span>LangChain</span><span>LangSmith</span><span>OpenAI API</span><span>OpenAI Agents SDK</span><span>RAG</span><span>Hybrid search</span><span>Agents</span><span>Tool calling</span><span>MCP</span><span>Ollama</span><span>Evaluation</span></div></div>
+    <div class="marquee reverse"><div class="track"><span>PostgreSQL</span><span>pgvector</span><span>SQLAlchemy</span><span>Alembic</span><span>Supabase</span><span>Neon</span><span>Docker</span><span>Docker Compose</span><span>GitHub Actions</span><span>Render</span><span>Streamlit</span><span>Git</span><span>Technical writing</span><span>Documentation</span><span>PostgreSQL</span><span>pgvector</span><span>SQLAlchemy</span><span>Alembic</span><span>Supabase</span><span>Neon</span><span>Docker</span><span>Docker Compose</span><span>GitHub Actions</span><span>Render</span><span>Streamlit</span><span>Git</span><span>Technical writing</span><span>Documentation</span></div></div>
 </section>
 
 </div>
 
 <footer id="contact"><div class="wrap">
   <h2>Let's talk</h2>
-  <p>I'm open to AI engineering roles and freelance AI builds.</p>
   <div class="cta">
-    <a class="btn primary" href="mailto:elosarah85@gmail.com">elosarah85@gmail.com</a>
+    <a class="btn primary" href="mailto:elosarah85@gmail.com">Get in touch</a>
     <a class="btn" href="https://www.linkedin.com/in/ikein-sarah-51b664224">LinkedIn</a>
-    <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
-    <!-- TIKTOK: replace # with your TikTok profile link -->
-    <a class="btn" href="#">TikTok</a>
-    <a class="btn" href="https://medium.com/@ikein_sarah">Medium</a>
   </div>
 </div></footer>
 
