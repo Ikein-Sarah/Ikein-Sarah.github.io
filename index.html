@@ -76,6 +76,8 @@ footer{padding:44px 0 64px;border-top:1px solid var(--line);color:var(--muted)}
 footer h2{color:var(--ink)}
 
 /* ---- interactions ---- */
+.about p{margin:0 0 12px;font-size:17px;max-width:680px}
+.about p:last-child{margin:0}
 .rotator{color:var(--ink);font-weight:500}
 .caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
@@ -116,7 +118,7 @@ nav .links a.active{color:var(--accent)}
 <nav><div class="wrap">
   <a class="name" href="#">Sarah Ikein</a>
   <div class="links">
-    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Stack</a><a class="keep" href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Stack</a><a class="keep" href="#contact">Contact</a>
   </div>
 </div></nav>
 
@@ -124,7 +126,7 @@ nav .links a.active{color:var(--accent)}
 <header>
   <div class="eyebrow">AI Engineer</div>
   <h1>Sarah Ikein</h1>
-  <p class="lead">I build and ship end-to-end <span class="rotator" aria-label="AI applications"><span class="word">AI applications</span></span>.<span class="caret" aria-hidden="true"></span></p>
+  <p class="lead">I build and ship end-to-end <span class="rotator typer" data-words="AI applications|RAG systems|AI workflows|AI agents">AI applications</span>.<span class="caret" aria-hidden="true"></span></p>
   <div class="cta">
     <a class="btn primary" href="#projects">See my projects</a>
     <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
@@ -135,6 +137,15 @@ nav .links a.active{color:var(--accent)}
     <a class="btn" href="mailto:elosarah85@gmail.com">Email me</a>
   </div>
 </header>
+
+<section id="about">
+  <h2>About me</h2>
+  <div class="about">
+    <p>Hi, I'm Sarah. I like making work faster. When I see a task that keeps repeating, my first thought is how to build something that takes it off someone's plate.</p>
+    <p>I've also spent two years creating technical content, including for an AI and data channel with over 300K subscribers, and I share what I build on my own TikTok.</p>
+    <p>When I'm not building, I'm <span class="rotator typer" data-words="reading|swimming|cooking|making my next video">reading</span>.<span class="caret" aria-hidden="true"></span></p>
+  </div>
+</section>
 
 <section id="projects">
   <h2>Featured projects</h2>
@@ -270,22 +281,21 @@ nav .links a.active{color:var(--accent)}
 <script>
 (function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // rotating words in the intro
-  var words=['AI applications','RAG systems','AI workflows','AI agents'];
-  var el=document.querySelector('.rotator .word');
-  if(el && !reduce){
-    var i=0,j=words[0].length,deleting=true;
-    function tick(){
-      var w=words[i];
-      if(deleting){j--; if(j<=0){deleting=false;i=(i+1)%words.length;}}
-      else{j++; if(j>=words[i].length){deleting=true; el.textContent=words[i]; return setTimeout(tick,2200);}}
-      el.textContent=words[i].slice(0,Math.max(j,0));
-      setTimeout(tick,deleting?45:85);
-    }
-    setTimeout(tick,2500);
+  // typing effect for every .typer (words in data-words, separated by |)
+  if(!reduce){
+    document.querySelectorAll('.typer').forEach(function(el,k){
+      var words=el.dataset.words.split('|'),i=0,j=words[0].length,deleting=true;
+      function tick(){
+        if(deleting){j--; if(j<=0){deleting=false;i=(i+1)%words.length;}}
+        else{j++; if(j>=words[i].length){deleting=true; el.textContent=words[i]; return setTimeout(tick,2200);}}
+        el.textContent=words[i].slice(0,Math.max(j,0));
+        setTimeout(tick,deleting?45:85);
+      }
+      setTimeout(tick,2500+k*1200);
+    });
   }
   // reveal on scroll
-  var items=document.querySelectorAll('section h2, .project, .job, .mini a, .marquee');
+  var items=document.querySelectorAll('section h2, .about p, .project, .job, .mini a, .marquee');
   if('IntersectionObserver' in window && !reduce){
     items.forEach(function(n){n.classList.add('reveal')});
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
