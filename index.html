@@ -74,6 +74,41 @@ h2{font-family:Fraunces,serif;font-weight:600;font-size:28px;margin:0 0 22px}
 @media (prefers-reduced-motion:reduce){.marquee .track{animation:none;flex-wrap:wrap;width:auto}.marquee{-webkit-mask-image:none;mask-image:none}}
 footer{padding:44px 0 64px;border-top:1px solid var(--line);color:var(--muted)}
 footer h2{color:var(--ink)}
+
+/* ---- interactions ---- */
+.rotator{color:var(--ink);font-weight:500}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+h1{background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 40%,var(--accent) 50%,var(--ink) 60%,var(--ink) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.project{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative;overflow:hidden}
+.project::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),var(--accent-soft),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.project:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 30px -18px rgba(0,0,0,.35)}
+.project:hover::before{opacity:1}
+.project > *{position:relative}
+.tags span{transition:background .2s,color .2s}
+.project:hover .tags span{background:var(--accent-soft);color:var(--accent)}
+.plinks a{display:inline-block;transition:transform .2s}
+.plinks a:hover{transform:translateX(3px);text-decoration:none}
+.mini a{transition:transform .2s,border-color .2s}
+.mini a:hover{transform:translateY(-3px)}
+.mini a::after{content:" →";color:var(--accent);opacity:0;transition:opacity .2s,margin .2s;margin-left:-6px}
+.mini a:hover::after{opacity:1;margin-left:0}
+.job{position:relative}
+.job h3{transition:color .2s}
+.job:hover h3{color:var(--accent)}
+nav .links a.active{color:var(--accent)}
+.btn{transition:transform .15s,box-shadow .15s}
+.btn:hover{box-shadow:0 6px 16px -10px rgba(0,0,0,.4)}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:10}
+@media (prefers-reduced-motion:reduce){
+  h1{animation:none;color:var(--ink);background:none}
+  .caret{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .project,.mini a,.btn,.plinks a{transition:none}
+}
 </style>
 </head>
 <body>
@@ -81,7 +116,7 @@ footer h2{color:var(--ink)}
 <nav><div class="wrap">
   <a class="name" href="#">Sarah Ikein</a>
   <div class="links">
-    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Skills</a><a class="keep" href="#contact">Contact</a>
+    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Stack</a><a class="keep" href="#contact">Contact</a>
   </div>
 </div></nav>
 
@@ -89,7 +124,7 @@ footer h2{color:var(--ink)}
 <header>
   <div class="eyebrow">AI Engineer</div>
   <h1>Sarah Ikein</h1>
-  <p class="lead">I build and ship end-to-end AI applications.</p>
+  <p class="lead">I build and ship end-to-end <span class="rotator" aria-label="AI applications"><span class="word">AI applications</span></span>.<span class="caret" aria-hidden="true"></span></p>
   <div class="cta">
     <a class="btn primary" href="#projects">See my projects</a>
     <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
@@ -173,7 +208,7 @@ footer h2{color:var(--ink)}
     <div>
       <h3>Technical Content Creator</h3>
       <div class="org">TikTok · 1,600+ followers</div>
-      <ul><li>Share the AI projects I build: the problem, what I built and how it works</li></ul>
+      <ul><li>I try out new AI tools, build with them and share what I learn, from tool walkthroughs like Graphify to projects that solve real problems</li></ul>
     </div>
   </div>
 
@@ -231,6 +266,45 @@ footer h2{color:var(--ink)}
   </div>
 </div></footer>
 
+<div class="progress" aria-hidden="true"></div>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // rotating words in the intro
+  var words=['AI applications','RAG systems','AI workflows','AI agents'];
+  var el=document.querySelector('.rotator .word');
+  if(el && !reduce){
+    var i=0,j=words[0].length,deleting=true;
+    function tick(){
+      var w=words[i];
+      if(deleting){j--; if(j<=0){deleting=false;i=(i+1)%words.length;}}
+      else{j++; if(j>=words[i].length){deleting=true; el.textContent=words[i]; return setTimeout(tick,2200);}}
+      el.textContent=words[i].slice(0,Math.max(j,0));
+      setTimeout(tick,deleting?45:85);
+    }
+    setTimeout(tick,2500);
+  }
+  // reveal on scroll
+  var items=document.querySelectorAll('section h2, .project, .job, .mini a, .marquee');
+  if('IntersectionObserver' in window && !reduce){
+    items.forEach(function(n){n.classList.add('reveal')});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+    items.forEach(function(n){io.observe(n)});
+  }
+  // spotlight follows the cursor on project cards
+  document.querySelectorAll('.project').forEach(function(c){
+    c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  });
+  // nav highlight + reading progress bar
+  var links=document.querySelectorAll('nav .links a'),bar=document.querySelector('.progress');
+  function onScroll(){
+    var h=document.documentElement; bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+    var cur='';document.querySelectorAll('section[id],footer[id]').forEach(function(s){if(s.getBoundingClientRect().top<120)cur=s.id;});
+    links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
 </body>
 </html>
 
