@@ -76,7 +76,7 @@ footer{padding:44px 0 64px;border-top:1px solid var(--line);color:var(--muted)}
 footer h2{color:var(--ink)}
 
 /* ---- interactions ---- */
-.about p{margin:0 0 12px;font-size:17px;max-width:680px}
+.about p{margin:0 0 12px;max-width:680px}
 .about p:last-child{margin:0}
 .rotator{color:var(--ink);font-weight:500}
 .caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
@@ -118,7 +118,7 @@ nav .links a.active{color:var(--accent)}
 <nav><div class="wrap">
   <a class="name" href="#">Sarah Ikein</a>
   <div class="links">
-    <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Stack</a><a class="keep" href="#contact">Contact</a>
+    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#skills">Stack</a><a class="keep" href="#contact">Contact</a>
   </div>
 </div></nav>
 
@@ -126,7 +126,11 @@ nav .links a.active{color:var(--accent)}
 <header>
   <div class="eyebrow">AI Engineer</div>
   <h1>Sarah Ikein</h1>
-  <p class="lead">I build and ship end-to-end <span class="rotator typer" data-words="AI applications|RAG systems|AI workflows|AI agents">AI applications</span>.<span class="caret" aria-hidden="true"></span></p>
+  <div class="about lead">
+    <p>Hi, I'm Sarah, an AI engineer and technical writer. I build end-to-end AI applications that solve real problems, and I write about how they work.</p>
+    <p>For the last two years I've been turning complicated tech into content people actually enjoy, including for an AI and data channel with over 300K subscribers. These days I share my own builds on TikTok.</p>
+    <p>When I'm not building, I'm probably <span class="rotator typer" data-words="reading a book I said I'd finish last month|swimming|cooking something that loosely follows the recipe|filming my next video">reading a book I said I'd finish last month</span>.<span class="caret" aria-hidden="true"></span></p>
+  </div>
   <div class="cta">
     <a class="btn primary" href="#projects">See my projects</a>
     <a class="btn" href="https://github.com/Ikein-Sarah">GitHub</a>
@@ -137,15 +141,6 @@ nav .links a.active{color:var(--accent)}
     <a class="btn" href="mailto:elosarah85@gmail.com">Email me</a>
   </div>
 </header>
-
-<section id="about">
-  <h2>About me</h2>
-  <div class="about">
-    <p>Hi, I'm Sarah, an AI engineer and technical writer. I build end-to-end AI applications that solve real problems, and I write about how they work.</p>
-    <p>For the last two years I've been turning complicated tech into content people actually enjoy, including for an AI and data channel with over 300K subscribers. These days I share my own builds on TikTok.</p>
-    <p>When I'm not building, I'm probably <span class="rotator typer" data-words="reading a book I said I'd finish last month|swimming|cooking something that loosely follows the recipe|filming my next video">reading a book I said I'd finish last month</span>.<span class="caret" aria-hidden="true"></span></p>
-  </div>
-</section>
 
 <section id="projects">
   <h2>Featured projects</h2>
